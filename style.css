@@ -1,0 +1,639 @@
+/* --- Fonts Import --- */
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Caveat:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap');
+
+/* --- Reset & Base Styles --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+/* --- Custom Sticky Navbar Styles --- */
+.custom-navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(255, 230, 239, 0.8); 
+    backdrop-filter: blur(12px); 
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 2px solid rgba(255, 179, 205, 0.4);
+    z-index: 9999; 
+    padding: 10px 0; /* قللنا الـ padding الرأسي قليلاً */
+    transition: all 0.3s ease;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem; /* مساحة جانبية متناسقة */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px; /* يمنع اللوجو والروابط من الاصطدام */
+}
+
+.nav-logo {
+    font-family: 'Caveat', cursive;
+    font-size: 2rem; /* صغرنا اللوجو سنة بسيطة */
+    font-weight: 700;
+    color: #ff4f87;
+    text-decoration: none;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 0.6rem; /* قللنا المسافة بين اللينكات جداً عشان تاخد راحتها */
+    flex-wrap: wrap; /* لو زادت أوي تنزل سطر جديد تلقائي بدل ما تتحشر */
+    justify-content: flex-end;
+}
+
+.nav-links li a {
+    font-family: 'Fredoka', sans-serif;
+    font-size: 0.95rem; /* صغرنا الخط من 1.05 لـ 0.95 */
+    font-weight: 500;
+    color: #8c6b76;
+    text-decoration: none;
+    padding: 6px 12px; /* قللنا الحشو الداخلي للزرار */
+    border-radius: 20px;
+    white-space: nowrap; /* يمنع الكلمة الواحدة تنقسم على سطرين */
+    transition: all 0.3s ease;
+}
+
+.nav-links li a:hover, 
+.nav-links li a.active {
+    color: white;
+    background-color: #ff4f87;
+    box-shadow: 0 5px 15px rgba(255, 79, 135, 0.3);
+}
+
+/* تعديل مسافة السكاشن حتى لا تختفي تحت النيوبار */
+section {
+    padding-top: 6.5rem; 
+}
+
+body {
+    font-family: 'Fredoka', sans-serif; 
+    background-color: #ffe6ef; 
+    background-image:
+        linear-gradient(#ffffff66 1px, transparent 1px),
+        linear-gradient(90deg, #ffffff66 1px, transparent 1px);
+    background-size: 40px 40px; 
+    color: #4a3b40;
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+/* --- Typography --- */
+h1, h2, .serif-font {
+    font-family: 'Caveat', cursive; 
+    font-weight: 700;
+}
+
+section {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 4rem 2rem;
+    position: relative;
+}
+
+.container {
+    max-width: 1000px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInTarget 1.2s ease forwards;
+}
+
+@keyframes fadeInTarget {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* --- 1. Hero Section --- */
+#hero {
+    background: transparent; 
+    text-align: center;
+}
+
+#hero h1 {
+    font-size: 5rem;
+    margin-bottom: 1rem;
+    color: #ff4f87; /* البينك الفاقع المبهج */
+    text-shadow: 0 0 15px rgba(255,80,120,.2);
+}
+
+#hero p {
+    font-size: 1.3rem;
+    color: #8c6b76;
+    margin-bottom: 2.5rem;
+    font-weight: 400;
+}
+
+.cta-btn {
+    font-family: 'Fredoka', sans-serif;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    padding: 14px 32px;
+    border: none;
+    background: #ff4f87;
+    color: white;
+    border-radius: 50px; /* حواف دائرية بالكامل */
+    cursor: pointer;
+    box-shadow: 0 10px 25px rgba(255,79,135,.4);
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.cta-btn:hover {
+    transform: scale(1.05);
+    background-color: #e63e72;
+    box-shadow: 0 12px 30px rgba(255,79,135,.6);
+}
+
+/* --- 2. Quiz Section --- */
+#quiz-section {
+    background-color: transparent;
+    text-align: center;
+    direction: rtl;
+}
+
+#quiz-section h2 {
+    font-size: 3.5rem;
+    margin-bottom: 2.5rem;
+    color: #ff4f87;
+}
+
+.quiz-card {
+    background: #FFFFFF;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 2.5rem;
+    border-radius: 20px; 
+    border: 3px solid #ffb3cd;
+    box-shadow: 0 15px 35px rgba(255,179,205,0.3);
+    display: none;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.quiz-card.active {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.quiz-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    color: #4a3b40;
+}
+
+.options-group {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.quiz-btn {
+    font-family: 'Fredoka', sans-serif;
+    font-size: 1.1rem;
+    padding: 14px;
+    border: 2px solid #ffb3cd;
+    background-color: #fff0f5;
+    color: #ff4f87;
+    cursor: pointer;
+    border-radius: 15px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.quiz-btn:hover {
+    background-color: #ff4f87;
+    border-color: #ff4f87;
+    color: white;
+    transform: scale(1.02);
+}
+
+.quiz-feedback {
+    margin-top: 1.5rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+    min-height: 24px;
+}
+
+.feedback-success { color: #4caf50; }
+.feedback-error { color: #ff4f87; }
+
+/* --- Popup Styles --- */
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 230, 239, 0.4); 
+    backdrop-filter: blur(6px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+}
+
+.popup-overlay.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.popup-box {
+    background: #FFFFFF;
+    padding: 2.5rem;
+    border-radius: 25px;
+    max-width: 400px;
+    width: 85%;
+    text-align: center;
+    border: 4px solid #ff4f87;
+    box-shadow: 0 20px 40px rgba(255,79,135,0.2);
+    transform: scale(0.9);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+#popup-message {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+}
+
+.text-success { color: #4caf50; }
+.text-error { color: #ff4f87; }
+
+.popup-close-btn {
+    font-family: 'Fredoka', sans-serif;
+    font-size: 1rem;
+    padding: 10px 25px;
+    border: none;
+    background: #ff4f87;
+    color: #FFFFFF;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 5px 15px rgba(255,79,135,0.3);
+}
+
+.popup-close-btn:hover {
+    background-color: #e63e72;
+    transform: scale(1.05);
+}
+
+/* --- 3. Counter Section --- */
+#counter-section {
+    background-color: transparent;
+    text-align: center;
+}
+
+#counter-section h2 {
+    font-size: 3.5rem;
+    margin-bottom: 3rem;
+    color: #ff4f87;
+}
+
+.countdown-container {
+    display: flex;
+    gap: 2.5rem;
+    justify-content: center;
+}
+
+.time-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: white;
+    padding: 20px;
+    border-radius: 20px;
+    border: 2px solid #ffb3cd;
+    min-width: 110px;
+    box-shadow: 0 10px 25px rgba(255,179,205,0.2);
+}
+
+.time-number {
+    font-size: 4rem;
+    font-weight: 700;
+    color: #ff4f87;
+    font-family: 'Fredoka', sans-serif;
+}
+
+.time-label {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #8c6b76;
+    margin-top: 0.5rem;
+}
+
+/* --- 4. Gallery Section --- */
+#gallery {
+    width: 100%;
+    padding: 60px 0;
+    overflow: hidden;
+    background: transparent;
+}
+
+.gallery-strip {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.slider-track {
+    display: flex;
+    gap: 20px;
+    width: max-content;
+    margin-top: 30px;
+    animation: scroll 25s linear infinite;
+}
+
+.slider-track img {
+    width: 260px;
+    height: 340px;
+    object-fit: cover;
+    border-radius: 25px; /* صور بحواف دائرية تتماشى مع الروح الجديدة */
+    flex-shrink: 0;
+    border: 4px solid white;
+    box-shadow: 0 15px 30px rgba(255,79,135,0.15);
+    transition: transform 0.3s ease;
+}
+
+.slider-track img:hover {
+    transform: scale(1.05) rotate(2deg);
+}
+
+.reverse-strip .slider-track {
+    animation-direction: reverse;
+}
+
+@keyframes scroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+}
+
+/* --- 5. Wishes Section --- */
+#wishes {
+    background-color: transparent;
+}
+
+#wishes h2 {
+    text-align: center;
+    font-size: 3.5rem;
+    margin-bottom: 4rem;
+    color: #ff4f87;
+}
+
+.wishes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 3rem;
+}
+
+.wish-card {
+    background: #FFFFFF;
+    padding: 2.5rem;
+    border-radius: 25px;
+    box-shadow: 0 15px 35px rgba(255,179,205,0.2);
+    border: 2px solid #ffb3cd;
+    position: relative;
+}
+
+/* حركة كيوت للـ wish-card */
+.wish-card::before {
+    content: '⭐';
+    position: absolute;
+    top: -15px;
+    left: 20px;
+    font-size: 20px;
+}
+
+.wish-text {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.2rem;
+    color: #4a3b40;
+    margin-bottom: 1.5rem;
+}
+
+.wish-author {
+    font-family: 'Fredoka', sans-serif;
+    font-size: 0.9rem;
+    color: #ff4f87;
+    font-weight: 600;
+}
+
+/* --- 6. Envelope Section (الظرف والقطة الكيوت) --- */
+#envelope-section {
+    background-color: transparent;
+    padding: 6rem 2rem;
+}
+
+.envelope {
+    position: relative;
+    width: 360px;
+    height: 240px;
+    background-color: #ff4f87; /* بينك فاقع ومبهج */
+    border-radius: 15px;
+    cursor: pointer;
+    box-shadow: 0 15px 35px rgba(255, 79, 135, 0.4);
+    margin: 50px auto; 
+    overflow: hidden;
+    animation: envelopeShake 1.5s infinite ease-in-out; 
+}
+
+.envelope.open {
+    animation: none; 
+    overflow: visible; 
+}
+
+@keyframes envelopeShake {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(1.5deg); }
+    75% { transform: rotate(-1.5deg); }
+}
+
+.top-flap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 140px; 
+    background: #ff73a1; /* درجة أفتح للغطا */
+    clip-path: polygon(0 0, 50% 100%, 100% 0);
+    transform-origin: top;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 10;
+}
+
+.front {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; 
+    background: #e63e72; /* درجة أغمق تعطي الـ 3D لقلب الظرف */
+    clip-path: polygon(0 35%, 50% 65%, 100% 35%, 100% 100%, 0% 100%);
+    z-index: 9;
+}
+
+.letters {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 5; 
+}
+
+.letter {
+    position: absolute;
+    left: 50%;
+    bottom: -15px; 
+    transform: translateX(-50%) scale(0.9);
+    width: 330px; 
+    height: auto;
+    background: white;
+    border-radius: 15px;
+    padding: 25px 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    transition: bottom 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275), transform 0.7s ease;
+    cursor: grab;
+}
+
+.letter h3 { 
+    font-family: 'Fredoka', sans-serif;
+    font-weight: 700;
+    color: #ff4f87;
+    margin-bottom: 12px; 
+    font-size: 1.2rem; 
+}
+
+.letter p { 
+    font-family: 'Fredoka', sans-serif;
+    color: #555555; 
+    line-height: 1.5; 
+    font-size: 14px; 
+}
+
+.letter:nth-child(1) { z-index: 5; }
+.letter:nth-child(2) { z-index: 4; }
+.letter:nth-child(3) { z-index: 3; }
+.letter:nth-child(4) { z-index: 2; }
+.letter:nth-child(5) { z-index: 1; }
+
+.envelope.open .top-flap { transform: rotateX(180deg); z-index: 1; }
+
+.envelope.open .letter:nth-child(1) { bottom: 100px; transform: translateX(-52%) rotate(-4deg) scale(1); }
+.envelope.open .letter:nth-child(2) { bottom: 130px; transform: translateX(-46%) rotate(3deg) scale(1); }
+.envelope.open .letter:nth-child(3) { bottom: 160px; transform: translateX(-50%) rotate(-1deg) scale(1); }
+.envelope.open .letter:nth-child(4) { bottom: 190px; transform: translateX(-54%) rotate(5deg) scale(1); }
+.envelope.open .letter:nth-child(5) { bottom: 220px; transform: translateX(-48%) rotate(-2deg) scale(1); }
+
+/* --- القطة الـ Pop-up داخل الظرف --- */
+.envelope-cat {
+    position: absolute;
+    top: -30px;
+    right: 35px;
+    width: 65px;
+    height: auto;
+    z-index: 6;
+    transform: translateY(80px);
+    opacity: 0;
+    transition: transform 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.3s;
+}
+
+.envelope.open .envelope-cat {
+    transform: translateY(-40px);
+    opacity: 1;
+}
+
+.envelope-heart {
+    position: absolute;
+    font-size: 20px;
+    pointer-events: none;
+    z-index: 15;
+    animation: envelopeHeartFly 1.5s ease-out forwards;
+}
+
+@keyframes envelopeHeartFly {
+    0% { transform: translateY(100px) scale(0.5); opacity: 0; }
+    20% { opacity: 1; }
+    100% { transform: translateY(-150px) translateX(var(--random-x, 0px)) scale(1.2); opacity: 0; }
+}
+
+/* --- 7. Surprise Section --- */
+#surprise {
+    background-color: transparent;
+    text-align: center;
+}
+
+#surprise h2 {
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+    color: #ff4f87;
+}
+
+#surprise p {
+    font-size: 1.2rem;
+    color: #8c6b76;
+    margin-bottom: 3rem;
+}
+
+/* Simple Confetti Canvas overlay */
+#confetti-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+}
+
+/* Shake Animation for Popup Error */
+@keyframes shake {
+    0% { transform: translateX(0); }
+    20% { transform: translateX(-8px); }
+    40% { transform: translateX(8px); }
+    60% { transform: translateX(-6px); }
+    80% { transform: translateX(6px); }
+    100% { transform: translateX(0); }
+}
+
+.popup-shake {
+    animation: shake 0.4s ease;
+}
+
+/* Responsive Fixes */
+@media (max-width: 768px) {
+    #hero h1 { font-size: 3rem; }
+    #quiz-section h2, #counter-section h2, #gallery h2, #wishes h2, #surprise h2 { font-size: 2.5rem; }
+    .countdown-container { gap: 1rem; flex-wrap: wrap; justify-content: center; }
+    .time-box { min-width: 80px; padding: 10px; }
+    .time-number { font-size: 2.5rem; }
+    .wishes-grid { gap: 1.5rem; }
+    .letter { width: 280px; }
+}

@@ -1,0 +1,87 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>HBD Animation</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="message.css">
+    <link rel="stylesheet" href="bg-animi.css">
+    
+    </head>
+    <body>
+        <!-- <nav class="custom-navbar">
+        <div class="nav-container">
+            <a href="main.html" class="nav-logo">🌸 Spaces</a>
+            <ul class="nav-links">
+                <li><a href="main.html" class="active">Home</a></li>
+                <li><a href="quiz.html">Quiz</a></li>
+                <li><a href="counter.html">Countdown</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="wishes.html">Wishes</a></li>
+                <li><a href="envelope.html">Envelope</a></li>
+                <li><a href="HBD.html">Surprise</a></li>
+                <li><a href="bg-animi.html">Surprise</a></li>
+                <li><a href="ballon.html">Surprise</a></li>
+                <li><a href="surprise.html">Surprise</a></li>
+            </ul>
+        </div>
+    </nav> -->
+
+        <audio id="bgMusic" src="assests/dama.mp3" preload="auto"></audio>
+    <div class="slider">
+        <div class="slide"></div>
+        <div class="slide"></div>
+        <div class="slide"></div>
+    </div>
+
+    <div class="content">
+        <h1 class="hbd">Happy Birthday</h1>
+        <p class="sub">To My Favorite Person 🤍</p>
+    </div>
+
+    <div class="scene">
+    <div class="envelope-wrapper">
+        <div class="envelope" id="envelope">
+            <div class="top-flap"></div>
+            
+            <div class="letter">
+                <div class="message" id="typedText"></div>
+                <div class="sticker-div"><img src="assests/pg2.jpg" class="sticker" id="sticker">
+                </div>
+                </div>
+            <div class="sides"></div>
+            <div class="front"></div>
+        </div>
+    </div>
+    </div>
+            <div class="blur-layer"></div>
+            
+
+
+    <script>
+
+        function createHeart(){
+        const heart = document.createElement("div");
+        heart.classList.add("heart");
+        heart.innerHTML = "♡";
+
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.fontSize = Math.random() * 25 + 15 + "px";
+        heart.style.animationDuration = Math.random() * 3 + 4 + "s";
+
+        document.body.appendChild(heart);
+
+        setTimeout(()=>{
+            heart.remove();
+        },7000);
+        }
+
+        setInterval(createHeart, 300);
+
+    </script>
+    <script src="message.js"></script>
+
+    </body>
+    </html>

@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>balloons</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body{
+            font-family: 'Fredoka', sans-serif;
+            min-height:100vh;
+            overflow:hidden;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            background:#ffe6ef;
+            background-image:
+                linear-gradient(#ffffff66 1px, transparent 1px),
+                linear-gradient(90deg,#ffffff66 1px, transparent 1px);
+            background-size:40px 40px;
+        }
+
+        .main-balloon-container {
+            position: absolute;
+            bottom: -600px; /* نزلتها أكتر تحت الشاشة عشان الرسالة طويلة ومتظهرش في الأول خالص */
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            /* زودت الوقت لـ 25 ثانية عشان تطلع ببطء شديد وبشكل ناعم */
+            animation: flyUpMain 25s linear infinite; 
+            z-index: 10;
+        }
+
+        .main-balloon {
+            width: 180px;
+            height: 220px;
+            background: #ff4081;
+            border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
+            position: relative;
+            box-shadow: inset -10px -10px 20px rgba(0,0,0,0.2), 0px 10px 20px rgba(0,0,0,0.15);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        /* الصورة داخل البالونة */
+        .main-balloon img {
+            width: 75%;
+            height: 75%;
+            object-fit: cover;
+            border-radius: 50%;
+            /* border: 4px solid white; */
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        /* عقدة البالونة الرئيسية */
+        .main-balloon::after {
+            content: "";
+            position: absolute;
+            bottom: -2px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-left: 12px solid transparent;
+            border-right: 12px solid transparent;
+            border-bottom: 12px solid #ff4081;
+        }
+
+        /* الخيط الرئيسي */
+        .string {
+            width: 2px;
+            height: 80px;
+            background-color: #757575;
+        }
+
+        /* الرسالة المعلقة */
+        .message-card {
+            background: #ff4081;
+            padding: 15px 25px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            text-align: center;
+            max-width: 580px; /* حددت العرض عشان الكلام المكتوب منسق ومريح للعين */
+            border: none;
+            position: relative;
+            transform: rotate(-2deg);
+            animation: sway 3s ease-in-out infinite alternate;
+        }
+
+        .message-card h3 {
+            color: #fafafa;
+            margin-bottom: 8px;
+        }
+
+        .message-card p {
+            color: #f6f2f3;
+            font-size: 0.8rem;
+            line-height: 1.4;
+        }
+
+        /* --- البالونات العشوائية في الخلفية --- */
+        .bg-balloon-container {
+            position: absolute;
+            bottom: -250px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            animation: flyUpBackground linear infinite;
+            z-index: 2;
+        }
+
+        .bg-balloon {
+            border-radius: 50% 50% 50% 50% / 45% 45% 55% 55%;
+            box-shadow: inset -7px -7px 15px rgba(0,0,0,0.15);
+            position: relative;
+        }
+
+        /* عقدة بلالين الخلفية */
+        .bg-balloon::after {
+            content: "";
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-left: 6px solid transparent;
+            border-right: 6px solid transparent;
+            border-bottom: 8px solid var(--balloon-color);
+        }
+
+        /* خيوط بلالين الخلفية */
+        .bg-string {
+            width: 1px;
+            background: rgba(117, 117, 117, 0.55);
+            animation: stringWobble 2s ease-in-out infinite alternate;
+        }
+
+        /* --- الأنيميشن (الحركة) --- */
+        
+        /* حركة طيران البالونة الرئيسية */
+        @keyframes flyUpMain {
+            0% {
+                bottom: -400px; /* تبدأ مخفية تماماً بالأسفل */
+                transform: translateX(-50%) rotate(0deg);
+            }
+            50% {
+                transform: translateX(-35%) rotate(4deg); /* تميل قليلاً أثناء الصعود المتأني */
+            }
+            100% {
+                bottom: 110vh; /* تخرج من أعلى الشاشة تماماً */
+                transform: translateX(-50%) rotate(-2deg);
+            }
+        }
+
+        /* حركة طيران بالونات الخلفية */
+        @keyframes flyUpBackground {
+            0% {
+                bottom: -200px;
+                transform: translateX(0) rotate(0deg);
+            }
+            50% {
+                transform: translateX(40px) rotate(4deg);
+            }
+            100% {
+                bottom: 105vh;
+                transform: translateX(-30px) rotate(-4deg);
+            }
+        }
+
+        /* حركة أرجحة الرسالة */
+        @keyframes sway {
+            0% { transform: rotate(-3deg) translateX(-5px); }
+            100% { transform: rotate(3deg) translateX(5px); }
+        }
+
+        /* حركة تموج الخيوط الصغيرة */
+        @keyframes stringWobble {
+            0% { transform: rotate(-2deg); }
+            100% { transform: rotate(2deg); }
+        }
+    </style>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="custom-navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">🌸 Spaces</a>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="quiz.html">Quiz</a></li>
+                <li><a href="counter.html">Countdown</a></li>
+                <li><a href="HBD.html">HBD</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="wishes.html">Wishes</a></li>
+                <li><a href="envelope.html">Envelope</a></li>
+                <li><a href="bg-animi.html">Message 4 u</a></li>
+                <li><a href="ballon.html">Balloons</a></li>
+                <li><a href="surprise.html">last thing</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- البالونة الرئيسية الطائرة -->
+    <div class="main-balloon-container">
+        <div class="main-balloon">
+            <img src="assests/photo_2026-05-18_21-49-41.jpg" alt="صورة داخل البالونة"> 
+        </div>
+        <div class="string"></div>
+        <div class="message-card">
+            <h3>Happy Birthday</h3>
+            <p>Happy Birthday to my favorite human 💫<br>
+            You’re not just my best friend, you’re my safe place, my laughter, and my home in human form. I’m so lucky life chose you for me.</p>
+        </div>
+    </div>
+
+    <script>
+        const colors = ['#ff1744', '#00e676', '#2979ff', '#ffea00', '#aa00ff', '#ff9100', '#00e5ff', '#e91e63'];
+
+        function createBackgroundBalloon() {
+            const container = document.createElement('div');
+            container.classList.add('bg-balloon-container');
+
+            const balloon = document.createElement('div');
+            balloon.classList.add('bg-balloon');
+
+            const string = document.createElement('div');
+            string.classList.add('bg-string');
+
+            const size = Math.floor(Math.random() * 45) + 35; 
+            const leftPosition = Math.random() * 100; 
+            const duration = Math.random() * 7 + 7; 
+            const randomColor = colors[Math.floor(Math.random() * colors.length)];
+            const delay = Math.random() * 6; 
+
+            balloon.style.width = `${size}px`;
+            balloon.style.height = `${size * 1.25}px`;
+            balloon.style.backgroundColor = randomColor;
+            balloon.style.setProperty('--balloon-color', randomColor); 
+
+            string.style.height = `${size * 0.8}px`; 
+
+            container.style.left = `${leftPosition}%`;
+            container.style.animationDuration = `${duration}s`;
+            container.style.animationDelay = `${delay}s`;
+            container.style.opacity = Math.random() * 0.5 + 0.5; 
+
+            container.appendChild(balloon);
+            container.appendChild(string);
+            document.body.appendChild(container);
+
+            setTimeout(() => {
+                container.remove();
+            }, (duration + delay) * 1000);
+        }
+
+        setInterval(createBackgroundBalloon, 350);
+
+        for(let i = 0; i < 12; i++) {
+            createBackgroundBalloon();
+        }
+    </script>
+</body>
+</html>
